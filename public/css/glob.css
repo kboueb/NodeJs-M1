@@ -59,3 +59,21 @@ a {
     background-color: #5E8CA2;
     color: #FFEAEC;
 }
+
+.fan {
+    padding: 15px 0;
+    border-bottom: 1px solid #d1d1d1;
+}
+
+.container.liste {
+    border: 8px solid #4F6685;
+    border-radius: 7px;
+    margin-bottom: 30px;
+}
+
+#fan-title {
+    color: #565662;
+    margin: 0;
+    font-family: "Baloo Bhaina";
+    text-transform: uppercase;
+}

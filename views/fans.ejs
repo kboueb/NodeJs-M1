@@ -1,12 +1,14 @@
-<div class="container">
+<h2 id="fan-title" class="text-center">List Fans</h2>
+
+<div class="container liste">
     <% fans.forEach(f => { %>
         <div class="fan">
             <p>
-                <span class="item-label">Name :</span>
+                <span class="item-label text-info">Name :</span>
                 <%= f.name %>
             </p>
             <p>
-                <span class="item-label">Email :</span>
+                <span class="item-label text-info">Email :</span>
                 <%= f.email %>
             </p>
         </div>
