@@ -14,11 +14,11 @@ exports.getFanPage = (req, res) => {
 };
 
 exports.saveFan = (req, res) => {
-    let fan = new Fan({
+    let newFan = new Fan({
         name: req.body.name,
         email: req.body.email,
     });
-    fan.save((error, result) => {
+    newFan.save((error, result) => {
         if (error) res.send(error);
         res.render("thanks");
     });
