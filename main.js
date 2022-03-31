@@ -2,38 +2,37 @@ const express = require("express");
 
 const app = express();
 
-// const Actor = require('./Actors');
+const Fan = require("./models/Fans");
 
-// const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-// mongoose.connect("mongodb://127.0.0.1:27017/estm");
+mongoose.connect("mongodb://localhost:27017/Es6");
 
-// const db = mongoose.connection;
+const db = mongoose.connection;
 
-// db.once('open', () => {
-//     console.log("connecté!!!");
-// });
+db.once('open', () => { console.log(`Connected`); })
 
-// let myQuery = Actor.find();
+let myQuery = Fan.find();
 
-// myQuery.exec((error, data) => {
-//     if (data) console.log(`${data}`);
-// })
+myQuery.exec((error, data) => {
+    if (data) console.log(`${data}`);
+});
 
-// Actor.create({
-//     name: "stone",
-//     email: "stone@gmail.com"
-// }, (error, savedDocument) => {
-//     if (error) console.log(error);
-//     console.log(savedDocument);
-// });
-
-// app.get("/actors", (req, res) => {
-//     Actor.find({}, (error, actors) => {
+// // let fan = new Fan({
+// //     name: "Zzi",
+// //     email: "zzi@gmail.com"
+// // });
+// // fan.save((error, savedDocument) => {
+// //     if (error) console.log(error);
+// //     console.log(savedDocument);
+// // });
+// app.get("/fans", (req, res) => {
+//     Fan.find({}, (error, fans) => {
 //         if (error) throw error;
-//         res.json(actors);
+//         res.json(fans);
 //     });
 // });
+
 
 const homeController = require("./controllers/homeController");
 
@@ -51,22 +50,17 @@ app.use(layouts);
 
 app.use(express.static("public"));
 
+app.get("/fans", fansController.getAllFans, (req, res, next) => {
+    res.render("fans", { fans: req.data });
+});
+
 app.get("/", homeController.showHome);
 
 app.get("/courses", homeController.showCourses);
 
-app.get("/contact", homeController.showSignUp);
-app.post("/contact", homeController.postedSignUpForm);
+app.get("/contact", fansController.getFanPage);
 
-// app.get("/contact", fansController.getFanPage);
-
-// app.post("/contact", fansController.saveFan);
-
-// app.get("/fans", fansController.getAllFans, (req, res, next) => {
-//     res.render("fans", { fans: req.data });
-// });
-
-
+app.post("/contact", fansController.saveFan);
 
 app.use(errorController.pageNotFoundError);
 

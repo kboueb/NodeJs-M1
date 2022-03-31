@@ -1,0 +1,14 @@
+<div class="container">
+    <% fans.forEach(f => { %>
+        <div class="fan">
+            <p>
+                <span class="item-label">Name :</span>
+                <%= f.name %>
+            </p>
+            <p>
+                <span class="item-label">Email :</span>
+                <%= f.email %>
+            </p>
+        </div>
+        <% }); %>
+</div>
